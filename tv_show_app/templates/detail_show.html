@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>TV Shows</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2 class="col-10">TV SHOW {{show.id}}</h2>
+            <a class="col-2" href="/shows/">Go Back</a>
+        </div>
+        <div class="row">
+            <table class="col table table-borderless">
+                <tbody>
+                    <tr>
+                        <th class="w-25" scope="row">Title:</th>
+                        <td>{{show.title}}</td>
+                    </tr>
+                    <tr>
+                        <th class="w-25" scope="row">Network:</th>
+                        <td>{{show.network}}</td>
+                    </tr>
+                    <tr>
+                        <th class="w-25" scope="row">Release Date:</th>
+                        <td>{{show.release_date}}</td>
+                    </tr>
+                    <tr>
+                        <th class="w-25" scope="row">Description:</th>
+                        <td>{{show.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br><br><br><br><br>
+        <div class="row">
+            <div class="col">
+                <p>Last Updated: {{show.updated_at}}</p>
+                <a href="/shows/{{show.id}}/edit">Edit</a> | <a href="/shows/{{show.id}}/destroy">Delete</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+* {
+    /* outline: 1px dotted blue; */
+}
+
+.container {
+    margin-top: 50px; 
+}
+
+h2 {
+    padding: 30px;
+}
+
+table thead {
+    text-align: center;
+}
+
+a.col-2 {
+    text-align: right;
+}
+
+input[type="submit"] {
+    display: block;
+    margin: 0px auto;
+}

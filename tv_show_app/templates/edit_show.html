@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>TV Shows</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2 class="col-10">EDIT SHOW {{show.id}}</h2>
+            <a class="col-2" href="/shows/">Go Back</a>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form action="/shows/{{show.id}}/update" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="{{show.title}}">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="network">Network</label>
+                            <input type="text" class="form-control" id="network" name="network" value="{{show.network}}">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="release_date">Release Date</label>
+                            <input type="date" class="form-control" id="release_date" name="release_date" value={{show.release_date}}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" name="description" id="description" rows="10">{{show.description}}</textarea>
+                    </div>
+                    <input class="btn btn-info" type="submit" value="Update">
+                </form>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col text-center">
+                <a href="/shows/{{show.id}}">Go to Show</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
