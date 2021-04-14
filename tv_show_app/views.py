@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Show
 
 def index(request):
@@ -11,6 +12,13 @@ def new(request):
     return render(request, 'add_show.html')
 
 def create(request):
+    errors = Show.objects.validator(request.POST)
+
+    if errors:
+        for (key, value) in errors.items():
+            messages.error(request, value)
+        return redirect('/shows/new')
+    
     Show.objects.create(
         title = request.POST['title'],
         network = request.POST['network'],
